@@ -8,13 +8,13 @@ import React from 'react'
  * @component
  * @example
  * export default function () {
- *   return (
- *     <MyComponent>
- *       <Slot name="foo"><span>foo</span></Slot>
- *       <Slot name="bar"><span>bar</span></Slot>
- *       <span>baz</span>
- *     </MyComponent>
- *   )
+ *     return (
+ *         <MyComponent>
+ *             <Slot name="foo"><span>foo</span></Slot>
+ *             <Slot name="bar"><span>bar</span></Slot>
+ *             <span>baz</span>
+ *         </MyComponent>
+ *     )
  * })
  */
 
@@ -22,7 +22,7 @@ type SlotProps = React.PropsWithChildren<any> & {
     name: string
 }
 
-export function Slot (props: SlotProps) {
+export default function Slot (props: SlotProps) {
     return (
         <React.Fragment key={`slot#${props.name}`}>
             {props.children}
@@ -33,21 +33,21 @@ export function Slot (props: SlotProps) {
 /**
  * Finds root-level instances of slot components and maps their children to an object.
  * 
- * @param {object|array} children - Component children
+ * @param {any} children - Component children
  * 
  * @return {array} Array containing the slot map, and the default slot
  *
  * @example
  * export default function MyComponent ({ children }) {
- *   const slots = findSlots(children)
+ *     const slots = findSlots(children)
  * 
- *   return (
- *     <div>
- *       <div>{slots.foo}</div>
- *       <div>{slots.bar}</div>
- *       <div>{slots.defaultSlot}</div>
- *     </div>
- *   )
+ *     return (
+ *         <div>
+ *             <div>{slots.foo}</div>
+ *             <div>{slots.bar}</div>
+ *             <div>{slots.defaultSlot}</div>
+ *         </div>
+ *     )
  * })
  */
 
