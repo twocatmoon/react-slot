@@ -1,5 +1,9 @@
 import React from 'react'
 
+export type SlotProps = React.PropsWithChildren<any> & {
+    name: string
+}
+
 /**
  * Provides children to a component's slots.
  *
@@ -7,6 +11,7 @@ import React from 'react'
  *
  * @component
  * @example
+ * ```tsx
  * export default function () {
  *     return (
  *         <MyComponent>
@@ -16,11 +21,8 @@ import React from 'react'
  *         </MyComponent>
  *     )
  * })
+ * ```
  */
-
-type SlotProps = React.PropsWithChildren<any> & {
-    name: string
-}
 
 export default function Slot (props: SlotProps) {
     return (
@@ -30,17 +32,22 @@ export default function Slot (props: SlotProps) {
     )
 }
 
+export type Slots = {
+    [key: string]: any
+}
+
 /**
  * Finds root-level instances of slot components and maps their children to an object.
  * 
  * @param {any} children - Component children
  * 
- * @return {array} Array containing the slot map, and the default slot
+ * @return {Slots} Object of children mapped to slot names
  *
  * @example
+ * ```tsx
  * export default function MyComponent ({ children }) {
  *     const slots = findSlots(children)
- * 
+ *
  *     return (
  *         <div>
  *             <div>{slots.foo}</div>
@@ -49,11 +56,8 @@ export default function Slot (props: SlotProps) {
  *         </div>
  *     )
  * })
+ * ```
  */
-
-type Slots = {
-    [key: string]: any
-}
 
 export function findSlots (children: SlotProps['children']): Slots {
     if (!children || children.length === 0) return {
