@@ -105,7 +105,7 @@ Any children not contained inside of a `<Slot>` will be assigned to `slots.defau
    ```
 2. Include in your project
    ```ts
-   import { Slot, findSlots } from '@twocatmoon/react-slots'
+   import { Slot, findSlots } from '@twocatmoon/react-slot'
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
