@@ -23,7 +23,9 @@
     "url": "git+https://github.com/twocatmoon/react-slot.git"
   },
   "keywords": [
-    "react"
+    "react",
+    "slot",
+    "control flow"
   ],
   "author": "Jordan Ranson",
   "license": "MIT",
