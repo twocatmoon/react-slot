@@ -71,44 +71,31 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Vue implements a content distribution API inspired by the Web Components spec draft, using the `<slot>` element to serve as distribution outlets for content.
+React Slot implements a content distribution API inspired by Vue.js and the Web Components spec draft, using the `<Slot>` element to serve as distribution outlet for content.
 
 This allows you to compose components like this:
-
 ```tsx
-<navigation-link url="/profile">
-  Your Profile
-</navigation-link>
+<SectionHeader>
+  <Slot name='title'>Hello</Slot>
+  <Slot name='subtitle'>Lorem ipsum dolor sit amet.</Slot>
+</SectionHeader>
 ```
-Then in the template for `<navigation-link>`, you might have:
 
+Then in the template for `<Header>`, you might have:
 ```tsx
-<a
-  v-bind:href="url"
-  class="nav-link"
->
-  <slot></slot>
-</a>
-```
-When the component renders, `<slot></slot>` will be replaced by “Your Profile”. Slots can contain any template code, including HTML:
+const slots = findSlots(props.children)
 
-```tsx
-<navigation-link url="/profile">
-  <!-- Add a Font Awesome icon -->
-  <span class="fa fa-user"></span>
-  Your Profile
-</navigation-link>
+return (
+  <header>
+    <h1>{slots.title}</h1>
+    <p>{slots.subtitle}</p>
+  </header>
+)
 ```
-Or even other components:
 
-```tsx
-<navigation-link url="/profile">
-  <!-- Use a component to add an icon -->
-  <font-awesome-icon name="user"></font-awesome-icon>
-  Your Profile
-</navigation-link>
-```
-If `<navigation-link>`‘s template did not contain a `<slot>` element, any content provided between its opening and closing tag would be discarded.
+Slots can contain any template code, including HTML or even other components.
+
+Any children not contained inside of a `<Slot>` will be assigned to `slots.defaultSlot`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
