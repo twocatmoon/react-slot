@@ -11,21 +11,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <!-- <a href="https://github.com/twocatmoon/react-slot">
+  <!-- <a href="https://github.com/twocatmoon/react-actions">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-  <h3 align="center">React Slot</h3>
+  <h3 align="center">React Actions</h3>
 
   <p align="center">
-    A cleaner alternative for managing children in React components via named slots.
+    TODO
     <br />
-    <a href="https://twocatmoon.github.io/react-slot"><strong>Explore the docs »</strong></a>
+    <a href="https://twocatmoon.github.io/react-actions"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/twocatmoon/react-slot/issues">Report Bug</a>
+    <a href="https://github.com/twocatmoon/react-actions/issues">Report Bug</a>
     ·
-    <a href="https://github.com/twocatmoon/react-slot/issues">Request Feature</a>
+    <a href="https://github.com/twocatmoon/react-actions/issues">Request Feature</a>
   </p>
 </div>
 
@@ -55,31 +55,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-React Slot implements a content distribution API inspired by Vue.js and the Web Components spec draft, using the `<Slot>` element to serve as distribution outlet for content.
+TODO
 
-This allows you to compose components like this:
 ```tsx
-<SectionHeader>
-  <Slot name='title'>Hello</Slot>
-  <Slot name='subtitle'>Lorem ipsum dolor sit amet.</Slot>
-</SectionHeader>
+TODO
 ```
-
-Then in the template for `<Header>`, you might have:
-```tsx
-const slots = findSlots(props.children)
-
-return (
-  <header>
-    <h1>{slots.title}</h1>
-    <p>{slots.subtitle}</p>
-  </header>
-)
-```
-
-Slots can contain any template code, including HTML or even other components.
-
-Any children not contained inside of a `<Slot>` will be assigned to `slots.defaultSlot`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -101,11 +81,11 @@ Any children not contained inside of a `<Slot>` will be assigned to `slots.defau
 
 1. Install from NPM
    ```sh
-   npm i @twocatmoon/react-slot
+   npm i @twocatmoon/react-actions
    ```
 2. Include in your project
    ```ts
-   import { Slot, findSlots } from '@twocatmoon/react-slot'
+   TODO
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -115,7 +95,7 @@ Any children not contained inside of a `<Slot>` will be assigned to `slots.defau
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_Please refer to the [Documentation](https://twocatmoon.github.io/react-slot)_
+_Please refer to the [Documentation](https://twocatmoon.github.io/react-actions)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -153,7 +133,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Twitter - [@twocatmoon](https://twitter.com/twocatmoon)
 
-Project Link - [https://github.com/twocatmoon/react-slot](https://github.com/twocatmoon/react-slot)
+Project Link - [https://github.com/twocatmoon/react-actions](https://github.com/twocatmoon/react-actions)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -170,13 +150,13 @@ Project Link - [https://github.com/twocatmoon/react-slot](https://github.com/two
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/twocatmoon/react-slot.svg?style=for-the-badge
-[contributors-url]: https://github.com/twocatmoon/react-slot/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/twocatmoon/react-slot.svg?style=for-the-badge
-[forks-url]: https://github.com/twocatmoon/react-slot/network/members
-[stars-shield]: https://img.shields.io/github/stars/twocatmoon/react-slot.svg?style=for-the-badge
-[stars-url]: https://github.com/twocatmoon/react-slot/stargazers
-[issues-shield]: https://img.shields.io/github/issues/twocatmoon/react-slot.svg?style=for-the-badge
-[issues-url]: https://github.com/twocatmoon/react-slot/issues
-[license-shield]: https://img.shields.io/github/license/twocatmoon/react-slot.svg?style=for-the-badge
-[license-url]: https://github.com/twocatmoon/react-slot/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/twocatmoon/react-actions.svg?style=for-the-badge
+[contributors-url]: https://github.com/twocatmoon/react-actions/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/twocatmoon/react-actions.svg?style=for-the-badge
+[forks-url]: https://github.com/twocatmoon/react-actions/network/members
+[stars-shield]: https://img.shields.io/github/stars/twocatmoon/react-actions.svg?style=for-the-badge
+[stars-url]: https://github.com/twocatmoon/react-actions/stargazers
+[issues-shield]: https://img.shields.io/github/issues/twocatmoon/react-actions.svg?style=for-the-badge
+[issues-url]: https://github.com/twocatmoon/react-actions/issues
+[license-shield]: https://img.shields.io/github/license/twocatmoon/react-actions.svg?style=for-the-badge
+[license-url]: https://github.com/twocatmoon/react-actions/blob/trunk/LICENSE

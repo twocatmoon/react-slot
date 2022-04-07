@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/lib/index.ts"),
-      name: "react-slot",
+      name: "react-actions",
       fileName: (format: any) => `index.${format}.js`,
     },
     rollupOptions: {
