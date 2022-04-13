@@ -8,8 +8,8 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/lib/index.tsx"),
-      name: "react-actions",
+      entry: path.resolve(__dirname, "src/lib/index.ts"),
+      name: "react-slot",
       fileName: (format: any) => `index.${format}.js`,
     },
     rollupOptions: {

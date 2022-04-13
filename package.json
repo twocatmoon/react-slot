@@ -1,8 +1,8 @@
 {
-  "name": "@twocatmoon/react-actions",
+  "name": "@twocatmoon/react-slot",
   "private": false,
-  "version": "0.1.0",
-  "description": "A dead-simple and boiler-plate free state management strategy for React.",
+  "version": "2.0.2",
+  "description": "A cleaner alternative for managing children in React components via named slots.",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "exports": {
@@ -16,11 +16,11 @@
     "dev": "vite",
     "build": "tsc && vite build && tsc --project tsconfig.build.json && npm run docs:build",
     "docs:dev": "npm run docs:build & npx http-server docs",
-    "docs:build": "npx typedoc src/lib/index.tsx --customCss ./docStyles.css"
+    "docs:build": "npx typedoc src/lib/index.ts --customCss ./docStyles.css"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/twocatmoon/react-actions.git"
+    "url": "git+https://github.com/twocatmoon/react-slot.git"
   },
   "keywords": [
     "react",
@@ -30,9 +30,9 @@
   "author": "Jordan Ranson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/twocatmoon/react-actions/issues"
+    "url": "https://github.com/twocatmoon/react-slot/issues"
   },
-  "homepage": "https://github.com/twocatmoon/react-actions#readme",
+  "homepage": "https://github.com/twocatmoon/react-slot#readme",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

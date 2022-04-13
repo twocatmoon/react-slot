@@ -11,21 +11,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <!-- <a href="https://github.com/twocatmoon/react-actions">
+  <!-- <a href="https://github.com/twocatmoon/react-slot">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a> -->
 
-  <h3 align="center">React Actions</h3>
+  <h3 align="center">React Slot</h3>
 
   <p align="center">
-    A dead-simple and boiler-plate free state management strategy for React.
+    A cleaner alternative for managing children in React components via named slots.
     <br />
-    <a href="https://twocatmoon.github.io/react-actions"><strong>Explore the docs »</strong></a>
+    <a href="https://twocatmoon.github.io/react-slot"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/twocatmoon/react-actions/issues">Report Bug</a>
+    <a href="https://github.com/twocatmoon/react-slot/issues">Report Bug</a>
     ·
-    <a href="https://github.com/twocatmoon/react-actions/issues">Request Feature</a>
+    <a href="https://github.com/twocatmoon/react-slot/issues">Request Feature</a>
   </p>
 </div>
 
@@ -55,67 +55,31 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-State management in React doesn't need to be complicated. Built using the Context API and useReducer hook, React Actions provides a straight-forward pattern for designing, manipulating, and caching state across your application. Example:
+React Slot implements a content distribution API inspired by Vue.js and the Web Components spec draft, using the `<Slot>` element to serve as distribution outlet for content.
 
+This allows you to compose components like this:
 ```tsx
-// store.ts
-
-type State = {
-    counter: number
-}
-
-const initialState = {
-    counter: 0
-}
-
-export const actions = {
-    incrementCounter: action<State, number>((prevState, amount) => {
-        return {
-            ...prevState,
-            counter: prevState.counter + amount
-        }
-    })
-}
-
-const options: CreateStoreOptions = {
-    storageKey: 'myStore',
-    storageType: 'local'
-}
-
-export const { Provider, useStore } = createStore<State>(initialState, actions, options)
-
-// App.tsx
-
-import { Provider, useStore, actions } from './store.ts'
-
-function Consumer () {
-    const [ state, dispatch, clearStorage ] = useStore()
-
-    return (
-        <div>
-            <p>Counter: <code>{state.counter}</code></p>
-            <p>
-                <button onClick={() => dispatch(actions.incrementCounter(2))}>
-                    Increment Counter by 2
-                </button>
-            </p>
-            <p>
-                <button onClick={() => clearStorage()}>Clear Local Storage</button>
-            </p>
-        </div>
-    )
-}
-
-function App () {
-    return (
-        <Provider>
-            <Consumer />
-        </Provider>
-    )
-}
+<SectionHeader>
+  <Slot name='title'>Hello</Slot>
+  <Slot name='subtitle'>Lorem ipsum dolor sit amet.</Slot>
+</SectionHeader>
 ```
 
-For a list of all the options that can be passed into `createStore`, please see the [documentation](/modules.html#CreateStoreOptions).
+Then in the template for `<Header>`, you might have:
+```tsx
+const slots = findSlots(props.children)
+
+return (
+  <header>
+    <h1>{slots.title}</h1>
+    <p>{slots.subtitle}</p>
+  </header>
+)
+```
+
+Slots can contain any template code, including HTML or even other components.
+
+Any children not contained inside of a `<Slot>` will be assigned to `slots.defaultSlot`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -137,11 +101,11 @@ For a list of all the options that can be passed into `createStore`, please see 
 
 1. Install from NPM
    ```sh
-   npm i @twocatmoon/react-actions
+   npm i @twocatmoon/react-slot
    ```
 2. Include in your project
    ```ts
-   import { action, createStore } from '@twocatmoon/react-actions'
+   import { Slot, findSlots } from '@twocatmoon/react-slot'
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -151,7 +115,7 @@ For a list of all the options that can be passed into `createStore`, please see 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_Please refer to the [Documentation](https://twocatmoon.github.io/react-actions)_
+_Please refer to the [Documentation](https://twocatmoon.github.io/react-slot)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -189,7 +153,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Twitter - [@twocatmoon](https://twitter.com/twocatmoon)
 
-Project Link - [https://github.com/twocatmoon/react-actions](https://github.com/twocatmoon/react-actions)
+Project Link - [https://github.com/twocatmoon/react-slot](https://github.com/twocatmoon/react-slot)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -206,13 +170,13 @@ Project Link - [https://github.com/twocatmoon/react-actions](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/twocatmoon/react-actions.svg?style=for-the-badge
-[contributors-url]: https://github.com/twocatmoon/react-actions/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/twocatmoon/react-actions.svg?style=for-the-badge
-[forks-url]: https://github.com/twocatmoon/react-actions/network/members
-[stars-shield]: https://img.shields.io/github/stars/twocatmoon/react-actions.svg?style=for-the-badge
-[stars-url]: https://github.com/twocatmoon/react-actions/stargazers
-[issues-shield]: https://img.shields.io/github/issues/twocatmoon/react-actions.svg?style=for-the-badge
-[issues-url]: https://github.com/twocatmoon/react-actions/issues
-[license-shield]: https://img.shields.io/github/license/twocatmoon/react-actions.svg?style=for-the-badge
-[license-url]: https://github.com/twocatmoon/react-actions/blob/trunk/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/twocatmoon/react-slot.svg?style=for-the-badge
+[contributors-url]: https://github.com/twocatmoon/react-slot/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/twocatmoon/react-slot.svg?style=for-the-badge
+[forks-url]: https://github.com/twocatmoon/react-slot/network/members
+[stars-shield]: https://img.shields.io/github/stars/twocatmoon/react-slot.svg?style=for-the-badge
+[stars-url]: https://github.com/twocatmoon/react-slot/stargazers
+[issues-shield]: https://img.shields.io/github/issues/twocatmoon/react-slot.svg?style=for-the-badge
+[issues-url]: https://github.com/twocatmoon/react-slot/issues
+[license-shield]: https://img.shields.io/github/license/twocatmoon/react-slot.svg?style=for-the-badge
+[license-url]: https://github.com/twocatmoon/react-slot/blob/master/LICENSE

@@ -1,4 +1,4 @@
-import require$$0, { createContext, useReducer, useContext } from "react";
+import React from "react";
 var jsxRuntime = { exports: {} };
 var reactJsxRuntime_production_min = {};
 /*
@@ -77,7 +77,7 @@ shouldUseNative() ? Object.assign : function(target, source) {
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var f = require$$0, g = 60103;
+var f = React, g = 60103;
 reactJsxRuntime_production_min.Fragment = 60107;
 if (typeof Symbol === "function" && Symbol.for) {
   var h = Symbol.for;
@@ -103,72 +103,31 @@ reactJsxRuntime_production_min.jsxs = q;
   jsxRuntime.exports = reactJsxRuntime_production_min;
 }
 const jsx = jsxRuntime.exports.jsx;
-function action(resolver) {
-  function action2(data) {
-    return [action2.id, data === void 0 ? null : data];
-  }
-  action2.id = "";
-  action2.resolve = resolver;
-  return action2;
+function Slot(props) {
+  return /* @__PURE__ */ jsx(React.Fragment, {
+    children: props.children
+  }, `slot#${props.name}`);
 }
-function createStore(initialState, actions, options) {
-  let storageApi;
-  if (typeof window !== "undefined" && (options == null ? void 0 : options.storageKey) && (options == null ? void 0 : options.storageType)) {
-    storageApi = options.storageType === "local" ? localStorage : sessionStorage;
-  }
-  if (storageApi) {
-    try {
-      const storedStateData = storageApi.getItem(options.storageKey);
-      if (storedStateData !== null) {
-        initialState = JSON.parse(storedStateData);
-      }
-    } catch {
-      throw new Error("Unable to parse stored data for store.");
-    }
-  }
-  const store = createContext({
-    state: initialState || null,
-    dispatch: null
-  });
-  Object.entries(actions).forEach(([key, action2]) => action2.id = key);
-  const Provider = (props) => {
-    const [state, dispatch] = useReducer((state2, payload) => {
-      const [actionId, data] = payload;
-      const action2 = actions[actionId];
-      if (!action2) {
-        throw new Error(`Action with ID '${actionId}' does not exist for this Store.`);
-      }
-      const result = action2.resolve(state2, data);
-      if (storageApi) {
-        storageApi.setItem(options.storageKey, JSON.stringify(result));
-      }
-      return result;
-    }, initialState);
-    return /* @__PURE__ */ jsx(store.Provider, {
-      value: {
-        state,
-        dispatch
-      },
-      children: props.children
-    });
-  };
-  const useStore = () => {
-    const {
-      state,
-      dispatch
-    } = useContext(store);
-    const clearStorage = () => {
-      if (storageApi) {
-        storageApi.removeItem(options == null ? void 0 : options.storageKey);
-      } else {
-        throw new Error("Unable to clear storage; no storage options set.");
-      }
+function findSlots(children) {
+  if (!children || children.length === 0)
+    return {
+      defaultSlot: /* @__PURE__ */ jsx(React.Fragment, {})
     };
-    return [state, dispatch, clearStorage];
-  };
-  return {
-    Provider,
-    useStore
-  };
+  if (!Array.isArray(children))
+    children = [children];
+  else
+    children = children.slice();
+  const childrenArr = children;
+  const slots = childrenArr.reduce((slots2, child, i) => {
+    if (child.type === Slot) {
+      if (!child.props.name)
+        throw new Error('Prop "name" is required for Slot.');
+      slots2[child.props.name] = child.props.children;
+      childrenArr[i] = null;
+    }
+    return slots2;
+  }, {});
+  slots.defaultSlot = childrenArr.filter((child) => child !== null);
+  return slots;
 }
-export { action, createStore };
+export { Slot, findSlots };
