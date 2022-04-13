@@ -7,6 +7,6 @@
     },
     "extends": "./tsconfig.json",
     "include": [
-        "src/lib/index.ts"
+        "src/lib/index.tsx"
     ]
 }

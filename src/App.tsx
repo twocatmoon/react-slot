@@ -16,7 +16,7 @@ const initialState = {
 }
 
 const actions = {
-    fooBarBaz: action<undefined, State>((prevState) => {
+    fooBarBaz: action<State, undefined>((prevState) => {
         const nextState = {
             ...prevState
         }
@@ -30,7 +30,7 @@ const actions = {
         return nextState
     }),
 
-    incrementCounter: action<number, State>((prevState, amount) => {
+    incrementCounter: action<State, number>((prevState, amount) => {
         return {
             ...prevState,
             counter: prevState.counter + amount
@@ -50,9 +50,7 @@ const { Provider, useStore } = createStore<State>(initialState, actions, options
  */
 
 function Consumer () {
-    const [ state, dispatch ] = useStore()
-
-    console.log('render!')
+    const [ state, dispatch, clearStorage ] = useStore()
 
     return (
         <div>
@@ -67,6 +65,9 @@ function Consumer () {
                 <button onClick={() => dispatch(actions.incrementCounter(2))}>
                     Increment Counter by 2
                 </button>
+            </p>
+            <p>
+                <button onClick={() => clearStorage()}>Clear Local Storage</button>
             </p>
         </div>
     )

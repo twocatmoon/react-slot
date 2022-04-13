@@ -18,7 +18,7 @@
   <h3 align="center">React Actions</h3>
 
   <p align="center">
-    TODO
+    A dead-simple and boiler-plate free state management strategy for React.
     <br />
     <a href="https://twocatmoon.github.io/react-actions"><strong>Explore the docs »</strong></a>
     <br />
@@ -55,11 +55,67 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-TODO
+State management in React doesn't need to be complicated. Built using the Context API and useReducer hook, React Actions provides a straight-forward pattern for designing, manipulating, and caching state across your application. Example:
 
 ```tsx
-TODO
+// store.ts
+
+type State = {
+    counter: number
+}
+
+const initialState = {
+    counter: 0
+}
+
+export const actions = {
+    incrementCounter: action<State, number>((prevState, amount) => {
+        return {
+            ...prevState,
+            counter: prevState.counter + amount
+        }
+    })
+}
+
+const options: CreateStoreOptions = {
+    storageKey: 'myStore',
+    storageType: 'local'
+}
+
+export const { Provider, useStore } = createStore<State>(initialState, actions, options)
+
+// App.tsx
+
+import { Provider, useStore, actions } from './store.ts'
+
+function Consumer () {
+    const [ state, dispatch, clearStorage ] = useStore()
+
+    return (
+        <div>
+            <p>Counter: <code>{state.counter}</code></p>
+            <p>
+                <button onClick={() => dispatch(actions.incrementCounter(2))}>
+                    Increment Counter by 2
+                </button>
+            </p>
+            <p>
+                <button onClick={() => clearStorage()}>Clear Local Storage</button>
+            </p>
+        </div>
+    )
+}
+
+function App () {
+    return (
+        <Provider>
+            <Consumer />
+        </Provider>
+    )
+}
 ```
+
+For a list of all the options that can be passed into `createStore`, please see the [documentation](/modules.html#CreateStoreOptions).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -85,7 +141,7 @@ TODO
    ```
 2. Include in your project
    ```ts
-   TODO
+   import { action, createStore } from '@twocatmoon/react-actions'
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>

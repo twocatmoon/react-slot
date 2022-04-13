@@ -2,7 +2,7 @@
   "name": "@twocatmoon/react-actions",
   "private": false,
   "version": "0.0.0",
-  "description": "",
+  "description": "A dead-simple and boiler-plate free state management strategy for React.",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "exports": {
@@ -16,7 +16,7 @@
     "dev": "vite",
     "build": "tsc && vite build && tsc --project tsconfig.build.json && npm run docs:build",
     "docs:dev": "npm run docs:build & npx http-server docs",
-    "docs:build": "npx typedoc src/lib/index.ts --customCss ./docStyles.css"
+    "docs:build": "npx typedoc src/lib/index.tsx --customCss ./docStyles.css"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,6 @@
   },
   "homepage": "https://github.com/twocatmoon/react-actions#readme",
   "dependencies": {
-    "@types/nanoid": "^3.0.0",
-    "nanoid": "^3.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
