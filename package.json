@@ -34,8 +34,8 @@
   },
   "homepage": "https://github.com/twocatmoon/react-slot#readme",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
